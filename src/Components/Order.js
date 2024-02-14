@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 
+import ShipioRepository from '../data/shipio_repository';
+
 const Order = () => {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
@@ -8,18 +10,31 @@ const Order = () => {
     const [number, setNumber] = useState();
     const [city, setCity] = useState();
 
-    const Push = () => {
+    const shipioRepository = new ShipioRepository();
 
-    }
-
+    const Push = () => shipioRepository.createOrder({
+        id: Math.floor(Math.random() * (10 - 1)) + 0, // Replace with real id.
+        customer_name: name,
+        customer_phone: number,
+        customer_email: email,
+        country: 'Bulgaria',
+        city: city,
+        address: address,
+        payment_method: 'cash',
+        order_total_amount: 'TEST',
+        currency: 'BGN',
+        products: 'TEST:1'
+    });
+    
     return (
         <>
-            {/* OPT-IN */}
-
+            <div className='container mx-5 p-5'>
+                {/* OPT-IN */}
+                {/* 
             <form className='m-5 '>
                 <input type='email' placeholder='Email' className='form-control' value={email} onChange={(e) => setEmail(e.target.value)} id='email' name='email' />
             </form>
-            <div className='d-flex justify-content-center pt-5'>
+            <div className='d-flex justify-content-center pt-5'> */}
 
                 {/* Form */}
 
@@ -32,10 +47,10 @@ const Order = () => {
                     </div>
                     <div className='my-2'>
                         {/* <p>Email</p> */}
-                        {/* <input type='email' placeholder='Email' className='form-control' value={email} onChange={(e) => setEmail(e.target.value)} id='email' name='email' /> */}
+                        <input type='email' placeholder='Email' className='form-control' value={email} onChange={(e) => setEmail(e.target.value)} id='email' name='email' />
                     </div>
                     <div className='my-2'>
-                        {/* <p>Телефонен номер</p> */}
+                        <p>Телефонен номер</p>
                         <input type='tel' placeholder='Телефонен номер' className='form-control' value={number} onChange={(e) => setNumber(e.target.value)} id='phone' name='phone' />
                     </div>
                     <hr />
@@ -59,7 +74,7 @@ const Order = () => {
                     <hr />
                     <button className='btn btn-dark' onClick={Push}>Поръчай</button>
                 </form>
-            </div>
+            </div >
         </>
     )
 }
