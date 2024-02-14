@@ -14,6 +14,9 @@ const Subs = () => {
     const [emailList, setEmailList] = useState([]);
     const emailsCollectionRef = collection(db, "emails");
 
+    const editor = useRef(null);
+    const [content, setContent] = useState('');
+
     useEffect(() => {
         const getEmails = async () => {
             const data = await getDocs(emailsCollectionRef);
@@ -52,11 +55,11 @@ const Subs = () => {
         }
     };
 
-    const openForm = () =>{
+    const openForm = () => {
         let emailForm = document.getElementById('sendEmailForm');
         emailForm.style.display = 'block';
     }
-    const closeForm = () =>{
+    const closeForm = () => {
         let emailForm = document.getElementById('sendEmailForm');
         emailForm.style.display = 'none';
     }
@@ -72,9 +75,13 @@ const Subs = () => {
 
             </nav>
             <div className='container m-5' id='sendEmailForm'>
-                <form className='mx-5'> 
-                <h3>Напиши имейл на активните абонати</h3>
-                    <JoditEditor className='' />
+                <form className='mx-4'>
+                    <h3>Напиши имейл на активните абонати</h3>
+                    <JoditEditor
+                        className=''
+                        ref={editor}
+                        onChange={setContent}
+                    />
                     <button className='btn btn-outline-primary my-2 mx-2 px-5 py-2'>Изпрати</button>
                     <button onClick={closeForm} className='btn btn-danger my-2 px-3 py-2'><i class="fa-solid fa-x"></i></button>
                 </form>
