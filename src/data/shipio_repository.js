@@ -1,6 +1,7 @@
 import HttpClient from "../http_client";
 
 // Do not store the token like that. Use secure storage (local storage) and get the value from there!
+// Check https://www.npmjs.com/package/react-secure-storage.
 const token = '13|XzjSXGkN0ySKaCxYpfMQa5IIuh27xWDWEjp9fjdw';
 
 class ShipioRepository {

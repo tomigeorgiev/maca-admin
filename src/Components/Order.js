@@ -12,20 +12,26 @@ const Order = () => {
 
     const shipioRepository = new ShipioRepository();
 
-    const Push = () => shipioRepository.createOrder({
-        id: Math.floor(Math.random() * (10 - 1)) + 0, // Replace with real id.
-        customer_name: name,
-        customer_phone: number,
-        customer_email: email,
-        country: 'Bulgaria',
-        city: city,
-        address: address,
-        payment_method: 'cash',
-        order_total_amount: 'TEST',
-        currency: 'BGN',
-        products: 'TEST:1'
-    });
-    
+    const Push = (event) => {
+        event.preventDefault();
+
+        shipioRepository.createOrder({
+            id: Math.floor(Math.random() * (10 - 1)) + 0, // Replace with real id.
+            customer_name: name,
+            customer_phone: number,
+            customer_email: email,
+            country: 'Bulgaria',
+            city: city,
+            address: address,
+            payment_method: 'cash',
+            order_total_amount: 'TEST',
+            currency: 'BGN',
+            products: 'TEST:1'
+        })
+            .then(() => console.log('Order successfuly created!'))
+            .catch(error => console.log(error));
+    }
+
     return (
         <>
             <div className='container mx-5 p-5'>

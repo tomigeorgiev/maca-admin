@@ -23,7 +23,6 @@ class HttpClient {
 
     // Method to make a POST request
     async post(url, data = {}, config = {}) {
-        console.log(url, data)
         try {
             const response = await this.instance.post(url, data, config);
             return response.data;
