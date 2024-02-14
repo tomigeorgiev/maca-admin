@@ -4,6 +4,8 @@ import './App.css';
 
 import Index from './Components/Index';
 import Order from './Components/Order';
+import Orders from './Components/Orders';
+import Subs from './Components/Subs';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/subscribers" element={<Subs />} />
         </Routes>
       </Router>
     </div>

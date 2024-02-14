@@ -1,23 +1,25 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import firebase from 'firebase'
+
+import {getFirestore} from 'firebase/firestore';
+
+import {getAuth, GoogleAuthProvider} from 'firebase/auth'
+
+import {getStorage} from 'firebase/storage'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBNs7o_sifgAr9CceDFmZ-LczqL7LqbZjo",
-  authDomain: "maca-admin.firebaseapp.com",
-  projectId: "maca-admin",
-  storageBucket: "maca-admin.appspot.com",
-  messagingSenderId: "915452481518",
-  appId: "1:915452481518:web:514d3bc97b43c1434008ff",
-  measurementId: "G-34CQMH4Q3R"
+  apiKey: "AIzaSyBQNjTNQg1uir5ZPE_zMq7NWsKs5Mfnk-I",
+  authDomain: "maca-new.firebaseapp.com",
+  projectId: "maca-new",
+  storageBucket: "maca-new.appspot.com",
+  messagingSenderId: "1047665209780",
+  appId: "1:1047665209780:web:e23626654c4536ff3dc2e1"
 };
 
-// Initialize Firebas
-
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+export const db = getFirestore(app);
